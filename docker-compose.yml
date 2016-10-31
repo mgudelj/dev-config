@@ -1,0 +1,13 @@
+config-server:
+  image: 863364574255.dkr.ecr.us-east-1.amazonaws.com/config-server:2.0.0-SNAPSHOT
+  ports:
+    - "8888"
+  environment:
+    - SPRING_PROFILES_ACTIVE=stage
+  restart: always
+  mem_limit: 128m
+  ulimits:
+    nproc: 65535
+    nofile:
+      soft: 40000
+      hard: 40000

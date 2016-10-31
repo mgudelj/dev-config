@@ -1,0 +1,17 @@
+server:
+  port: 8092
+flyway:
+  enabled: true
+  schemas:
+    - feed
+
+spring:
+  datasource:
+    url: jdbc:postgresql://dev-hotmark.ccirpbhbpdrc.eu-west-1.rds.amazonaws.com:5432/hm-stage
+    username: pgadmin
+    password: Hotmark01!
+    driver-class-name: org.postgresql.Driver
+    max-idle: 1
+    min-idle: 1
+    max-active: 2
+    maximum-pool-size: 2

@@ -1,0 +1,22 @@
+server:
+  port: 8094
+
+logging:
+  level:
+    com.hotmark.txqueue: 'DEBUG'
+
+spring:
+  datasource:
+    url: jdbc:postgresql://192.168.99.100:5432/hm-demo
+    username: pgadmin
+    password: Hotmark01!
+    driver-class-name: org.postgresql.Driver
+    max-idle: 1
+    min-idle: 1
+    maximum-pool-size: 2
+  metrics:
+    export:
+      enabled: true
+      delay-millis: 1000
+      send-latest: true
+    sensitive: false

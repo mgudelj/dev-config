@@ -1,0 +1,18 @@
+server:
+  port: 8092
+flyway:
+  enabled: true
+  # baseline-on-migrate: true
+  schemas:
+    - feed
+
+spring:
+  datasource:
+    url: jdbc:postgresql://192.168.99.100:5432/hm-demo
+    username: pgadmin
+    password: Hotmark01!
+    driver-class-name: org.postgresql.Driver
+    max-idle: 1
+    min-idle: 1
+    max-active: 2
+    maximum-pool-size: 2

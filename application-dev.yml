@@ -1,0 +1,121 @@
+logging:
+  level:
+    org.springframework.transaction: 'INFO'
+    org.springframework.jdbc: 'INFO'
+    com.hotmark.tenant.data: 'DEBUG'
+    com.hotmark.tenant.context: 'DEBUG'
+    org.springframework.cloud: 'INFO'
+    feign: 'INFO'
+
+hotmark:
+  email:
+    previewUrl: http://localhost:8090/api/v2/email/preview/
+  emailservice:
+    uri: http://localhost:8090
+  feedservice:
+    uri: http://localhost:8090
+  templateservice:
+    uri: http://localhost:8090
+  queueservice:
+    uri: http://localhost:8094
+  clientservice:
+    uri: http://localhost:8091
+  profileservice:
+    uri: http://localhost:8097
+  privateKey: hotmark-cloud.key
+  publicKey: hotmark-cloud.crt
+
+# hotmark:
+#   email:
+#     previewUrl: http://localhost:8090/api/v2/email/preview/
+#   emailservice:
+#     uri: http://ec2-54-194-152-157.eu-west-1.compute.amazonaws.com:8090
+#   feedservice:
+#     uri: http://ec2-54-194-152-157.eu-west-1.compute.amazonaws.com:8090
+#   templateservice:
+#     uri: http://ec2-54-194-152-157.eu-west-1.compute.amazonaws.com:8090
+#   queueservice:
+#     uri: http://ec2-54-194-152-157.eu-west-1.compute.amazonaws.com:8094
+#   clientservice:
+#     uri: http://localhost:8091
+#   privateKey: hotmark-cloud.key
+#   publicKey: hotmark-cloud.crt
+
+
+aws:
+  s3:
+    region: eu-west-1
+    accessKey: AKIAIEZEWRVHJ7SDELBQ
+    secretKey: 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
+    feed-xml-bucket: stage-hotmark-feed-xml
+    email-queue-bucket: stage-hotmark-email-queue
+    email-index-bucket: stage-hotmark-email-index
+    profile-xml-bucket: stage-hotmark-profile-xml
+  ses:
+    region: eu-west-1
+    accessKey: AKIAIEZEWRVHJ7SDELBQ
+    secretKey: 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
+  sqs:
+    region: eu-west-1
+    accessKey: AKIAIEZEWRVHJ7SDELBQ
+    secretKey: 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
+    maxNumberOfMessages: 5
+    visibilityTimeout: 10
+    waitTimeOut: 10
+    ses-delivery-queue: ses-delivery-queue
+    ses-bounced-queue: ses-bounced-queue
+    ses-complaints-queue: ses-complaints-queue
+    s3-email-queued-queue: s3-email-queued-queue
+    s3-email-index-queue: s3-email-index-queue
+    tracker-open-queue: tracker-open-queue
+    tracker-click-queue: tracker-click-queue
+    email-event-queue: email-event-queue
+    timeline-queue: timeline-queue
+    profile-queue: profile-queue
+    blacklist-queue: blacklist-queue
+    s3-profile-xml-import-queue: s3-profile-xml-import-queue
+  sns:
+    region: eu-west-1
+    accessKey: AKIAIEZEWRVHJ7SDELBQ
+    secretKey: 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
+    tracker-open-topic: arn:aws:sns:eu-west-1:863364574255:tracker-open-topic
+    tracker-click-topic: arn:aws:sns:eu-west-1:863364574255:tracker-click-topic
+    email-event-topic: arn:aws:sns:eu-west-1:863364574255:email-event-topic
+    timeline-topic: arn:aws:sns:eu-west-1:863364574255:timeline-topic
+    profile-topic: arn:aws:sns:eu-west-1:863364574255:profile-topic
+    blacklist-topic: arn:aws:sns:eu-west-1:863364574255:blacklist-topic
+  cloudWatch:
+    region: eu-west-1
+    accessKey: AKIAIEZEWRVHJ7SDELBQ
+    secretKey: 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
+    fixedDelayBetweenRuns: 10
+
+
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+
+server:
+  compression:
+    enabled: true
+    mimeTypes:
+      - text/html
+      - text/xml
+      - text/plain
+      - text/css
+      - application/xml
+      - application/json
+      - application/json;charset=UTF-8
+  useForwardHeaders: true
+
+ribbon:
+  ServerListRefreshInterval: 1000
+
+authserver:
+  realm: DEMO
+  config:
+    file: DEMO-emailservice-Keycloak.json
