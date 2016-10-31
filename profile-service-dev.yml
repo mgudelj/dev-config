@@ -1,0 +1,34 @@
+server:
+  port: 8097
+
+logging:
+  level:
+    com.hotmark.profile: 'DEBUG'
+    feign: 'DEBUG'
+
+spring:
+  metrics:
+    export:
+      enabled: false
+      send-latest: true
+    sensitive: false
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+
+elasticsearch:
+  profile-index: profile
+  profile-type: Profile
+  reservation-index: reservation
+  reservation-type: Reservation
+  rate-limit: 25
+  hosts:
+    -
+      host: 54.171.247.237
+      port: 9300
+    # -
+    #   host: localhost
+    #   port: 9300
+    # -
+    #   host: elasticsearch
+    #   port: 9300
