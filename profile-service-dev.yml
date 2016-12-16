@@ -21,10 +21,10 @@ elasticsearch:
   profile-type: Profile
   reservation-index: reservation
   reservation-type: Reservation
-  rate-limit: 25
+  rate-limit: 35
   hosts:
     -
-      host: 54.171.247.237
+      host: 52.213.203.151
       port: 9300
     # -
     #   host: localhost

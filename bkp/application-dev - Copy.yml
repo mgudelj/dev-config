@@ -6,7 +6,6 @@ logging:
     com.hotmark.tenant.context: 'DEBUG'
     org.springframework.cloud: 'INFO'
     feign: 'INFO'
-	
 
 hotmark:
   email:
@@ -25,15 +24,7 @@ hotmark:
     uri: http://localhost:8097
   privateKey: hotmark-cloud.key
   publicKey: hotmark-cloud.crt
-elasticsearch:
-  cluster-name: hotmark
-  hosts:
-    -
-      host: 52.211.140.129
-      port: 9300
-    -
-      host: 52.213.203.151
-      port: 9300
+
 # hotmark:
 #   email:
 #     previewUrl: http://localhost:8090/api/v2/email/preview/
