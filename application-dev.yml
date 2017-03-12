@@ -2,11 +2,33 @@ logging:
   level:
     org.springframework.transaction: 'INFO'
     org.springframework.jdbc: 'INFO'
-    com.hotmark.tenant.data: 'DEBUG'
-    com.hotmark.tenant.context: 'DEBUG'
     org.springframework.cloud: 'INFO'
     feign: 'INFO'
-	
+
+spring:
+  mvc:
+    throw-exception-if-no-handler-found: true
+
+elasticsearch:
+  cluster-name: elasticsearch
+  indexes:
+    data-feed: DataFeed
+    template: Template
+    blacklist: Blacklist
+    email-event: EmailEvent
+    email-log: EmailLog
+    survey: Survey
+    client: Client
+    profile: Profile
+    reservation: Reservation
+    profile-import: XmlImportLog
+    complain: Complain
+    timeline: TimeLine
+    user: User
+  hosts:
+    -
+      host: localhost
+      port: 9300
 
 hotmark:
   email:
@@ -25,30 +47,6 @@ hotmark:
     uri: http://localhost:8097
   privateKey: hotmark-cloud.key
   publicKey: hotmark-cloud.crt
-elasticsearch:
-  cluster-name: hotmark
-  hosts:
-    -
-      host: 52.211.140.129
-      port: 9300
-    -
-      host: 52.213.203.151
-      port: 9300
-# hotmark:
-#   email:
-#     previewUrl: http://localhost:8090/api/v2/email/preview/
-#   emailservice:
-#     uri: http://ec2-54-194-152-157.eu-west-1.compute.amazonaws.com:8090
-#   feedservice:
-#     uri: http://ec2-54-194-152-157.eu-west-1.compute.amazonaws.com:8090
-#   templateservice:
-#     uri: http://ec2-54-194-152-157.eu-west-1.compute.amazonaws.com:8090
-#   queueservice:
-#     uri: http://ec2-54-194-152-157.eu-west-1.compute.amazonaws.com:8094
-#   clientservice:
-#     uri: http://localhost:8091
-#   privateKey: hotmark-cloud.key
-#   publicKey: hotmark-cloud.crt
 
 
 aws:
@@ -60,10 +58,12 @@ aws:
     email-queue-bucket: stage-hotmark-email-queue
     email-index-bucket: stage-hotmark-email-index
     profile-xml-bucket: stage-hotmark-profile-xml
+    images-bucket: stage-hotmark-images
   ses:
     region: eu-west-1
     accessKey: AKIAIEZEWRVHJ7SDELBQ
     secretKey: 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
+    maxSendRate: 14
   sqs:
     region: eu-west-1
     accessKey: AKIAIEZEWRVHJ7SDELBQ
@@ -83,6 +83,7 @@ aws:
     profile-queue: profile-queue
     blacklist-queue: blacklist-queue
     s3-profile-xml-import-queue: s3-profile-xml-import-queue
+    webhook-survey-queue: webhook-survey-queue
   sns:
     region: eu-west-1
     accessKey: AKIAIEZEWRVHJ7SDELBQ
@@ -93,6 +94,7 @@ aws:
     timeline-topic: arn:aws:sns:eu-west-1:863364574255:timeline-topic
     profile-topic: arn:aws:sns:eu-west-1:863364574255:profile-topic
     blacklist-topic: arn:aws:sns:eu-west-1:863364574255:blacklist-topic
+    webhook-survey-topic: arn:aws:sns:eu-west-1:863364574255:webhook-survey-topic
   cloudWatch:
     region: eu-west-1
     accessKey: AKIAIEZEWRVHJ7SDELBQ
@@ -111,8 +113,10 @@ endpoints:
 server:
   compression:
     enabled: true
+    min-response-size: 2048
     mimeTypes:
       - text/html
+      - text/html;charset=utf-8
       - text/xml
       - text/plain
       - text/css
@@ -120,6 +124,10 @@ server:
       - application/json
       - application/json;charset=UTF-8
   useForwardHeaders: true
+  resources:
+    chain:
+      gzipped: true
+      enabled: true
 
 ribbon:
   ServerListRefreshInterval: 1000

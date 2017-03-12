@@ -9,6 +9,7 @@ feign:
       enabled: true
     response:
       enabled: true
+
 elasticsearch:
   hosts:
     -

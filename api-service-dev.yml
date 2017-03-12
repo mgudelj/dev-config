@@ -1,5 +1,5 @@
 server:
-  port: 8096
+  port: 8093
 
 feign:
   hystrix:
@@ -19,9 +19,18 @@ feign:
         - application/json;charset=UTF-8
     response:
       enabled: true
-    response:
-      enabled: true
 
-hotmark:
-  emailservice:
-    uri: http://localhost:8090
+spring:
+  jackson:
+    deserialization:
+      fail_on_unknown_properties: false
+    serialization:
+      indent_output: true
+      write_dates_as_timestamps: false
+    parser:
+      allow_comments: true
+
+mandrill:
+  keys:
+    webhook1: dQUaYBWpVGppSGVb7rPr-A
+    webhook2: 0HnHUH8oBEgpMzhVNzmmSg

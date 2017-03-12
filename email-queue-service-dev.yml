@@ -1,15 +1,16 @@
 server:
-  port: 8097
+  port: 8094
 
 logging:
   level:
-    com.hotmark.profile: 'DEBUG'
-    feign: 'DEBUG'
+    com.hotmark.email.queue: 'DEBUG'
+    com.hotmark.aws: 'DEBUG'
 
 spring:
   metrics:
     export:
       enabled: false
+      delay-millis: 1000
       send-latest: true
     sensitive: false
   jackson:
@@ -21,15 +22,5 @@ spring:
     parser:
       allow_comments: true
 
-elasticsearch:
-  rate-limit: 100
-  hosts:
-    # -
-    #   host: ec2-54-171-69-204.eu-west-1.compute.amazonaws.com
-    #   port: 9300
-    -
-      host: localhost
-      port: 9300
-    # -
-    #   host: elasticsearch
-    #   port: 9300
+mandrill:
+  apiKey: Z-ribMe_9KArlJbvcP9ObQ

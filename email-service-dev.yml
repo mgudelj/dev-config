@@ -3,7 +3,8 @@ server:
 
 logging:
   level:
-    com.hotmark.txbackend: 'DEBUG'
+    com.hotmark.email: 'DEBUG'
+    com.hotmark.aws: 'DEBUG'
     feign: 'DEBUG'
 
 spring:
@@ -12,30 +13,23 @@ spring:
       enabled: false
       send-latest: true
     sensitive: false
-
-elasticsearch:
-  blacklist-index: email-blacklist
-  blacklist-type: Blacklist
-  feed-index: data-feed
-  feed-type: DataFeed
-  template-index: template
-  template-type: Template
-  hosts:
-    -
-      host: localhost
-      port: 9300
-    -
-      host: elasticsearch
-      port: 9300
-
+  jackson:
+    deserialization:
+      fail_on_unknown_properties: false
+    serialization:
+      indent_output: true
+      write_dates_as_timestamps: false
+    parser:
+      allow_comments: true
 
 rendering:
   url: http://52.17.118.69/preview_smarty.php
 
 hotmark:
+  email:
+    preview: http://ec2-54-229-100-249.eu-west-1.compute.amazonaws.com:8096/email/preview
   tracker:
     baseUrl: http://ec2-54-229-100-249.eu-west-1.compute.amazonaws.com:8096
-    previewEndpoint: /tracker/v2/preview
     trackOpenEndpoint: /tracker/v2/open
     trackClickEndpoint: /tracker/v2/click
     unsubscribeEndpoint: /tracker/v2/unsubscribe

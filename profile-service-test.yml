@@ -13,20 +13,13 @@ spring:
       send-latest: true
     sensitive: false
   jackson:
-    deserialization:
-      fail_on_unknown_properties: false
     serialization:
-      indent_output: true
-      write_dates_as_timestamps: false
-    parser:
-      allow_comments: true
+      WRITE_DATES_AS_TIMESTAMPS: false
 
 elasticsearch:
-  rate-limit: 100
+  profile-index: profile
+  profile-type: Profile
   hosts:
-    # -
-    #   host: ec2-54-171-69-204.eu-west-1.compute.amazonaws.com
-    #   port: 9300
     -
       host: localhost
       port: 9300

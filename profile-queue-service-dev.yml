@@ -1,0 +1,29 @@
+server:
+  port: 8098
+
+logging:
+  level:
+    com.hotmark.profile.queue: 'DEBUG'
+    feign: 'DEBUG'
+
+spring:
+  metrics:
+    export:
+      enabled: false
+      send-latest: true
+    sensitive: false
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+
+elasticsearch:
+  hosts:
+    -
+      host: ec2-54-154-161-84.eu-west-1.compute.amazonaws.com
+      port: 9300
+    # -
+    #   host: localhost
+    #   port: 9300
+    # -
+    #   host: elasticsearch
+    #   port: 9300

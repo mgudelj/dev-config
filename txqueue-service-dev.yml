@@ -6,17 +6,36 @@ logging:
     com.hotmark.txqueue: 'DEBUG'
 
 spring:
-  datasource:
-    url: jdbc:postgresql://192.168.99.100:5432/hm-demo
-    username: pgadmin
-    password: Hotmark01!
-    driver-class-name: org.postgresql.Driver
-    max-idle: 1
-    min-idle: 1
-    maximum-pool-size: 2
+  # datasource:
+  #   url: jdbc:postgresql://192.168.99.100:5432/hm-demo
+  #   username: pgadmin
+  #   password: Hotmark01!
+  #   driver-class-name: org.postgresql.Driver
+  #   max-idle: 1
+  #   min-idle: 1
+  #   maximum-pool-size: 2
   metrics:
     export:
-      enabled: true
+      enabled: false
       delay-millis: 1000
       send-latest: true
     sensitive: false
+
+elasticsearch:
+  blacklist-index: email-blacklist
+  blacklist-type: Blacklist
+  event-index: email-event
+  event-type: EmailEvent
+  log-index: email-log
+  log-type: EmailLog
+  survey-index: survey
+  survey-type: Survey
+  hosts:
+    -
+      host: localhost
+      port: 9300
+
+
+elk:
+  host: localhost
+  port: 9300
