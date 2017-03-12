@@ -28,7 +28,7 @@ elasticsearch:
     #   host: ec2-54-171-69-204.eu-west-1.compute.amazonaws.com
     #   port: 9300
     -
-      host: localhost
+      host: 54.154.161.84
       port: 9300
     # -
     #   host: elasticsearch
