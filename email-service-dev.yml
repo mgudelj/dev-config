@@ -5,7 +5,6 @@ logging:
   level:
     com.hotmark.email: 'DEBUG'
     com.hotmark.aws: 'DEBUG'
-    feign: 'DEBUG'
 
 spring:
   metrics:
@@ -27,9 +26,9 @@ rendering:
 
 hotmark:
   email:
-    preview: http://ec2-54-229-100-249.eu-west-1.compute.amazonaws.com:8096/email/preview
+    preview: http://ec2-54-229-100-249.eu-west-1.compute.amazonaws.com/email/preview
   tracker:
-    baseUrl: http://ec2-54-229-100-249.eu-west-1.compute.amazonaws.com:8096
+    baseUrl: http://ec2-54-229-100-249.eu-west-1.compute.amazonaws.com
     trackOpenEndpoint: /tracker/v2/open
     trackClickEndpoint: /tracker/v2/click
     unsubscribeEndpoint: /tracker/v2/unsubscribe
