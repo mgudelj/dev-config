@@ -27,7 +27,7 @@ elasticsearch:
     user: User
   hosts:
     -
-      host: localhost
+      host: 54.154.133.242
       port: 9300
 
 hotmark:
