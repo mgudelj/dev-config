@@ -1,8 +1,9 @@
 logging:
   level:
     org.springframework.transaction: 'INFO'
-    org.springframework.jdbc: 'INFO'
     org.springframework.cloud: 'INFO'
+    org.springframework.jdbc: 'INFO'
+    com.hotmark.sso: 'INFO'
     feign: 'INFO'
 
 spring:
@@ -31,20 +32,6 @@ elasticsearch:
       port: 9300
 
 hotmark:
-  email:
-    previewUrl: http://localhost:8090/api/v2/email/preview/
-  emailservice:
-    uri: http://localhost:8090
-  feedservice:
-    uri: http://localhost:8090
-  templateservice:
-    uri: http://localhost:8090
-  queueservice:
-    uri: http://localhost:8094
-  clientservice:
-    uri: http://localhost:8091
-  profileservice:
-    uri: http://localhost:8097
   privateKey: hotmark-cloud.key
   publicKey: hotmark-cloud.crt
 
@@ -101,15 +88,6 @@ aws:
     secretKey: 8s7oNUa1aJjdcH8aik/l/UaKbrJmBTNu67tXBebo
     fixedDelayBetweenRuns: 10
 
-
-endpoints:
-  restart:
-    enabled: true
-  shutdown:
-    enabled: true
-  health:
-    sensitive: false
-
 server:
   compression:
     enabled: true
@@ -129,10 +107,15 @@ server:
       gzipped: true
       enabled: true
 
-ribbon:
-  ServerListRefreshInterval: 1000
-
-authserver:
-  realm: DEMO
-  config:
-    file: DEMO-emailservice-Keycloak.json
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+  cors:
+    allowed-headers: '*'
+    allowed-methods: '*'
+    allowed-origins: '*'
+    max-age: 1800
